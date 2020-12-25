@@ -1,0 +1,23 @@
+function digital_root (n) {
+  function reducer (num) {
+    let x = num;
+    let digit;
+    let leftover;
+    let k = 10;
+    let sum = 0;
+    while(x !== 0) {
+    leftover = x % k;
+    digit = leftover / k * 10;
+    x = x - leftover;
+    k *= 10;
+    sum += digit;
+    }
+    if (sum > 9) {
+      sum = reducer(sum)
+    }
+    return sum
+  }
+  return reducer(n)
+}
+
+console.log(digital_root(456))

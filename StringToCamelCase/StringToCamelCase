@@ -1,0 +1,17 @@
+function toCamelCase (str) {
+  const kebabArr = str.split('');
+  const indexesToReplace = [];
+  kebabArr.forEach((el, index) => {
+    if (el === '_' || el === '-') indexesToReplace.push(index);
+  })
+  let i = 0;
+  indexesToReplace.forEach((index) => {
+    let indexToUse = index - i;
+    i = i+1;
+    kebabArr[indexToUse+1]=kebabArr[indexToUse+1].toUpperCase();
+    kebabArr.splice(indexToUse, 2, kebabArr[indexToUse+1].toUpperCase());
+  })
+  return kebabArr.join('');
+}
+
+console.log(toCamelCase('the_stealth_warrior'));

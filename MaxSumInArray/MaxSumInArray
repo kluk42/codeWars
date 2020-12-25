@@ -1,0 +1,25 @@
+function maxSequence (arr) {
+  let sum = 0;
+  let sumArr = [];
+  let i = -1;
+  if (arr.length === 0) return 0;
+  function summator() {
+    i++;
+    const maxMember = Math.max(...arr);
+    let indexToDelete;
+    arr.forEach((el, index) => {
+      if (el === maxMember) indexToDelete = index;
+    });
+    sumArr.push(sum);
+    arr.splice(indexToDelete, 1);
+    if (!sumArr[i-1]) summator();
+    if (sumArr[i-1] <= sumArr[i]) {
+      summator()
+    } else {
+      if (sumArr[i-1]) return sumArr[i];
+    }
+  }
+  return summator();
+}
+
+console.log(maxSequence([-2,1,-3,4,-1,2,1,-5,4]));

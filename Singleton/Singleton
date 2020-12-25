@@ -1,0 +1,34 @@
+class Singleton {
+	constructor() {
+		if (!Singleton.callCount) {
+			Singleton.callCount = 1;
+			Singleton.obj = this;
+			return this
+		}
+		else {
+			Singleton.callCount += 1;
+			return Singleton.obj
+	}
+}
+	setCount() {
+		this.callCount = this.callCount + 1;
+	}
+}
+
+const obj1 = new Singleton();
+const obj2 = new Singleton();
+
+obj1.setCount();
+obj2.setCount();
+
+console.log(obj1 === obj2);
+console.log(Singleton.callCount);
+
+var phrase
+
+function sayHi() {
+  phrase = "Привет";
+
+  console.log(window.phrase);
+}
+sayHi();
