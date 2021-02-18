@@ -1,0 +1,17 @@
+function isNumberPrime (numb) {
+  if (numb<=1) return false;
+  if (numb === 2) return true
+  const sqr = numb**.5;
+  const sqrRounded = Math.floor(sqr);
+  const isUneven = numb%2;
+  if (!isUneven) return false;
+  let result=true;
+  let i = 3;
+  while((result) && (i<=sqrRounded)) {
+    if (numb%i === 0) result=false;
+    i+=2;
+  }
+  return result
+}
+
+console.log(isNumberPrime(9))

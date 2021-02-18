@@ -1,0 +1,18 @@
+function scramble (str1, str2) {
+  const getCharFrequency = (str) => {
+    return str.split('').reduce((acc, char) => {
+      (acc[char]+=1) || (acc[char]=1);
+      return acc
+    }, {})
+  }
+  const str1CharFrequency = getCharFrequency(str1);
+  const str2CharFrequency = getCharFrequency(str2);
+  const str2Letters = Object.keys(str2CharFrequency);
+  let result = true;
+  str2Letters.forEach((charToFind) => {
+    if ((!str1CharFrequency[charToFind]) || (str1CharFrequency[charToFind]<str2CharFrequency[charToFind])) result = false
+  })
+  return result
+}
+
+console.log(scramble('katas', 'stak'))
